@@ -1,11 +1,11 @@
-package observerVariation;
+package fitnessTraining;
 
-public class ExerciseSubscriber implements Spectator {
-
-	private String name;
-	private Instructor exercise;
+public class Spectator implements IObserver {
 	
-	public ExerciseSubscriber(String name) {
+	private String name;
+	private IObservable exercise;
+
+	public Spectator(String name) {
 		this.setName(name);
 	}
 
@@ -15,12 +15,13 @@ public class ExerciseSubscriber implements Spectator {
 			System.out.println(this.getName() + " has no exercise");
 			return;
 		}
+		
 		String newExercise = exercise.getUpdate();
 		System.out.println(this.getName() + ": recieved new exercise: " + newExercise);
 	}
 
 	@Override
-	public void setExercise(Instructor exercise) {
+	public void setExercise(IObservable exercise) {
 		this.exercise = exercise;
 	}
 
