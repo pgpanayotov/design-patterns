@@ -13,15 +13,16 @@ public class FitnessTrainingMain {
 		trainer.subscribe(spec2);
 		trainer.subscribe(spec1);
 		
-		ICommand lieDowncommand = new LieDownCommand(trainer);
-		ICommand getUpCommand = new GetUpCommand(trainer);
+		CommandFactory cf = new CommandFactory(trainer);
+		
+		ICommand lieDowncommand = cf.getInstance("Lie Down");
+		ICommand getUpCommand = cf.getInstance("GetUp");
 		
 		instructor.setCommand(getUpCommand);
 		instructor.setExerciseToTrainer();
 		
 		instructor.setCommand(lieDowncommand);
 		instructor.setExerciseToTrainer();
-
 	}
 
 }
